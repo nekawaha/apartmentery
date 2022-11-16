@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>아파트멘터리</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            sc = 0; last_sc = 0;
+            $(window).scroll(function(){
+                sc = $(window).scrollTop()
+                
+                if(sc>last_sc){
+               
+                    $("header").css({'top':'-70px'})
+                }
+                else if(sc<last_sc){
+ 
+                    $("header").css({'top':'0px'})
+                }
+                last_sc = sc
+            })
+            
+        })
+    </script>
+    
+    <style>
+        @font-face {
+    font-family: 'SpoqaHanSansNeo-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/SpoqaHanSansNeo-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+        *{margin: 0;padding: 0;list-style: none; font-family: 'SpoqaHanSansNeo-Regular';}
+        body{height: 5000px;}
+        header{width: 100%;height: 70px;position: fixed;z-index: 998;transition:top 0.4s;top: 0;}
+        #logo{float: left;width: 159px;height: 20px;margin-top: 25px;margin-left: 45px;cursor: pointer;position: relative;z-index: 999;}
+        #logo>img{vertical-align: top;}
+        #logo>img:nth-child(2){display: none;}
+        #menu{width: 100%;line-height: 70px;position: absolute;left: 0;right: 0;top: 0;margin: auto;text-align: center;}
+        #menu>li{font-size: 14px;font-weight: 600;margin:0 40px;display: inline-block;cursor: pointer;}
+        #menu>li:nth-child(1){margin-left: 0;}
+        #right_menu{float: right;margin-right: 50px;position: relative;z-index: 999;}
+        #right_menu>li{float: left;cursor: pointer;}
+        #right_menu>li:nth-child(1){width: 131px;height: 40px;background-color: #000;color: #fff;text-align: center;line-height: 40px;border-radius: 20px;margin-top: 15px;margin-right: 30px;font-size: 16px;}
+        #right_menu>li:nth-child(2){margin-top: 24px;}
+        #right_menu>li:nth-child(2)>img:nth-child(2){display: none;}
+        #main{position: relative;margin-top: 70px;}
+        #main>img{width: 100%;vertical-align: top;}
+        #main_mobile_bg{display: none;}
+        #main_txt_box{width: 60%;height: 80%;position: absolute;left: 140px;top: 70px;}
+        #main_txt_box>h2{font-size: 5vw;color: #fff;}
+        #main_txt_box>p{ font-size: 1.2vw; color: #fff; font-weight: 900;line-height: 2.1vw;margin-top: 40px;}
+        #main_txt_box>button{width: 10vw;height: 2.6vw;border: 1px solid #fff;background-color: transparent;color: #fff;font-size: 1vw;font-weight: 900;margin-top: 45px;text-align: center;}
+
+        #view{width: 1050px;margin: 120px auto;overflow: hidden;}
+        #view>div>img{width: 100%;position: relative;}
+        #view>div>img:nth-child(2){display: none;}
+            #view>div>h3{position: absolute;top: 55px;left: 48px;font-size: 22px;color: #fff;font-weight: 900;}
+        .vtm{display: none;}
+        .vtp{display: block;}
+            #view1{width: 49.5%;height: 100%;background-size: cover;float: left;position: relative;}
+            #view2{width: 49.5%;height: 100%;background-size: cover;float: right;position: relative;}
+
+        #service{width: 1230px;margin: auto;margin-top: 50px;}
+        #service_mobile{display: none;float: left;}
+        #service>h3{text-align: center;font-size: 30px;font-weight: 900;}
+        #service>ul{overflow: hidden;margin-top: 50px;width: 100%;}
+        #service>ul>li{width: 31.333%;float: left;}
+        #service>ul>li:nth-child(2){margin: 0 2%;padding: 0 0;}
+        #service>ul>li>img:nth-child(1){width: 100%;}
+        #service_txt_box{width: 100%;overflow: hidden;}
+        #service_txt_box>h4{float: left;font-size: 22px;margin-top: 30px;}
+        #service_txt_box>h5{float: left;font-size: 18px;line-height: 28px;color: #8e8e9d;margin-top: 30px;}
+        #service_txt_box>h5>span{line-height: 22px;font-size: 22px;}
+        #service_txt_box>p{margin-top: 30px;margin-top: 80px;font-size: 18px;font-weight: 400;line-height: 32px;font-size: 16px;}
+        #service_txt_box>button{border: none;background-color: transparent;color: #000;font-size: 16px;font-weight: 900;margin-top: 40px;}
+
+        #banner1{position: relative;overflow: hidden;}
+        #banner1_pc{width: 100%;vertical-align: top;}
+        #banner1_mobile{width: 100%;vertical-align: top;display: none;}
+        #banner1_txt_box{position: absolute;width: 500px;right: 200px;top: 80px;}
+        #banner1_txt_box>h3{font-size: 30px;}
+        #banner1_txt_box>h3:nth-child(3){text-align: right;}
+        #banner1_txt_box>p{margin-top: 50px;font-weight: 600;}
+        #banner1_txt_box>button{width: 180px;height: 54px;border: 1px solid #000;background-color: transparent;font-size: 18px;font-weight: 900;margin-top: 60px;}
+
+        #consumer{width: 1340px;overflow: hidden;margin: 80px auto;position: relative;overflow: hidden;}
+        #consumer>h3{text-align: center;font-size: 30px;font-weight: 900;margin-bottom: 50px;}
+        #consumer>ul{width: 100%;overflow: hidden;}
+        #consumer>ul>li{width: 32%;float: left;position: relative;height: 100%;padding-bottom: 90px;height: 30%;overflow: hidden;height: 560px;}
+        
+        #consumer>ul>li>img{width: 100%;}
+        #consumer>ul>li>h4{font-size: 40px;height: 30px;}
+        #consumer>ul>li>p{font-size: 13px;font-weight: 600;line-height: 30px;}
+        #consumer>ul>li:nth-child(1)>p{padding-bottom: 30px;}
+        #consumer>ul>li:nth-child(2){margin: 0 2%;}
+  
+        .consumers{width: 320px;height: 70px;position: absolute;bottom: 0;left: 0;}
+        .consumers>img{float: left;height: 100%;}
+        .comment{float: left;width: 70%;margin-top: 50px;}
+        .comment>li{float: left;}
+        .comment>li>p{font-size: 14px;font-weight: 900; }
+
+        .comment>li:nth-child(2){border-left: 2px solid #000;margin-left: 4px;}
+        .comment>li:nth-child(2)>p{margin-left: 4px;}
+
+        #produce{width: 1230px;overflow: hidden;margin: auto;margin-top: 100px;}
+        #produce>div{float: left;width: 49%;position: relative;}
+        #produce>div>img{width: 100%;}
+        #produce>div>p{position: absolute;}
+        #produce>div:nth-child(1){margin-right: 2%;}
+
+        #produce>div>h3{position: absolute;left: 20px;top: 45px;font-weight: 700;font-size: 24px;color: #fff;}
+        #produce>div>p{position: absolute;left: 20px;top: 90px;font-weight: 400;font-weight: 18;line-height: 32px;color: #fff;font-size: 18px;}
+        #produce>div>button{border: none;background-color: transparent;color: #fff;font-size: 16px;font-weight: 900;margin-top: 40px;position: absolute;left: 20px;bottom: 80px;}
+
+
+        footer{width: 100%;border-top: 1px solid #e7e7e7;margin-top: 100px;}
+        #footer_box{width: 1080px;margin: auto;overflow: hidden;box-sizing: border-box;padding: 50px;}
+        #footer_box1{width: 25%;height: 250px;float: left;}
+        #footer_box1>ul{width: 100%;height: 100%;}
+        #footer_box1>ul>li{float: left;font-size: 12px;margin-bottom: 20px;font-weight: 600;cursor: pointer;width: 100%;}
+        #footer_box1>ul>li:nth-child(1){margin-bottom: 10px;}
+        #footer_box1>ul>li:nth-child(2){font-size: 24px;width: 100%;}
+        #footer_box2{width: 20%;height: 250px;float: left;margin: 0 5%;}
+        #footer_box2>ul{margin: auto;margin-top: 30px;}
+        #footer_box2>ul>li{width: 45px;height: 45px;border-radius: 45px;position: relative;float: left;border: 1px solid #e7e7e7;cursor: pointer;}
+        #footer_box2>ul>li:nth-child(2){margin: 0 10px;}
+        #footer_box2>ul>li>img{position: absolute;top: 0;bottom: 0;left: 0;right: 0;margin: auto;}
+        #footer_box3{width: 45%;height: 250px;float: left;}
+        #footer_box3>ul:nth-child(1)>li{float: left;font-size: 12px;cursor: pointer;}
+        #footer_box3>ul:nth-child(1)>li:nth-child(2){border-right: 1px solid #e7e7e7;border-left: 1px solid #e7e7e7;margin: 0 10px;}
+        #footer_box3>ul:nth-child(1)>li:nth-child(2)>p{padding: 0 10px;}
+        #footer_box3>ul:nth-child(2){margin-top: 30px;}
+        #footer_box3>ul:nth-child(2)>li{font-size: 12px;color: #808080;float: left;line-height: 24px;}
+        #footer_box3>p{margin-top: 140px;color: #808080;font-size: 12px;}
+    </style>
+    <style>
+
+
+        @media all and (min-width:0px){/*320~767 모바일*/
+            header{background-color: #000;}
+            #logo{margin-left: 30px;width: 30px;height: 30px;margin-top: 20px;}
+            #logo>img:nth-child(2){display: block;}
+            #logo>img:nth-child(1){display: none;}
+            #right_menu{margin-right: 30px;}
+            #right_menu>li:nth-child(1){margin-right: 25px;background-color: #fff;color: #000;width: 90px;height: 36px;margin-top: 17px;font-size: 14px;font-weight: 1000;line-height: 36px;border-radius: 50px;}
+            #right_menu>li:nth-child(2)>img:nth-child(2){display: block;}
+            #right_menu>li:nth-child(2)>img:nth-child(1){display: none;}
+            #menu{display: none;}
+
+            #main_mobile_bg{display: inline-block;}
+            #main_bg{display: none;}
+            #main_txt_box{width: 240px;height: 280px;position: absolute;left: 26%;top: 20px;text-align: center;}
+            #main_txt_box>h2{font-size: 40px;color: #000;font-weight: 300;}
+            #main_txt_box>p{ font-size: 10px; color: #000; font-weight: 900;line-height: 2.1vw;margin-top: 16px;}
+            #main_txt_box>button{width: 135px;height: 40px;border: 1px solid #000;background-color: transparent;color: #000;font-size: 12px;font-weight: 900;margin-top: 26px;text-align: center;}
+
+
+            #banner1_txt_box{position: absolute;width: 260px;right: 200px;top: 40px;}
+            #banner1_txt_box>h3{font-size: 20px;}
+            #banner1_txt_box>h3:nth-child(3){text-align: right;}
+            #banner1_txt_box>p{margin-top: 20px;font-weight: 600;font-size: 14px;}
+            #banner1_txt_box>button{width: 130px;height: 46px;border: 1px solid #000;background-color: transparent;font-size: 12px;font-weight: 900;margin-top: 25px;}
+            #banner1_pc{width: 100%;vertical-align: top;display: none;}
+            #banner1_mobile{width: 100%;vertical-align: top;display: inline-block;}
+            .comment{float: left;width: 70%;margin-top: 25px;}
+            .comment>li:nth-child(2){border-left: 0px solid #000;margin-left: 0px;}
+            .comment>li{float: none;}
+        .comment>li:nth-child(2)>p{margin-left: 4px;}
+            #footer_box{width: 100%;}
+            #footer_box1{display: none;}
+            #footer_box2{display: none;}
+            #footer_box3{display: block;width: 100%;}
+            #service { width: 90%; }
+            #service>ul>li{width: 100%;float: left;}
+            #service>ul>li:nth-child(2){margin: 50px 0;}
+            #service_mobile{display: block;width: 30%;margin-top: 20px;}
+            #service_txt_box{float: left; width: 170px;margin-left: 5%;}
+            #service_txt_box{width: 65%;overflow: hidden;}
+            #service_txt_box>h4{font-size: 18px;margin-top: 20px;}
+            #service_txt_box>h5{font-size: 14px;line-height: 24px;color: #8e8e9d;margin-top: 20px;}
+            #service_txt_box>h5>span{line-height: 14px;font-size: 14px;}
+            #service_txt_box>p{font-size: 12px;font-weight: 900;line-height: 26px;}
+            #service_txt_box>button{font-size: 12px;font-weight: 900;}
+            #consumer{width: 100%;padding-left: 40px;}
+            #consumer>ul{width: 1000px;}
+            #consumer>ul>li>p{font-size: 12px;font-weight: 600;line-height: 20px;}
+            #produce{width: 96%;overflow: hidden;margin: auto;margin-top: 100px;}
+        .produce_pc_img{display: none;}
+        .produce_mobile_img{display: block;}
+        #produce>div>h3{font-size: 18px;}
+        #produce>div>p{font-size: 13px;}
+            #view{width: 100%;}
+            #view>div>img:nth-child(2){display: block;}
+            #view>div>img:nth-child(1){display: none;}
+            .vtp{display: none;}
+        .vtm{display: block;}
+            #view>div>h3{position: absolute;top: 40px;left: 20px;font-size: 20px;}
+        }
+
+        @media all and (min-width:768px){ /* 0~1023*/
+            
+        }   
+
+
+
+        @media all and (min-width:1024px){/*1024~1599 노트북*/
+            header{background-color: #fff;}
+            #logo{margin-left: 45px;width: 159px;height: 20px;margin-top: 25px;}
+            #logo>img:nth-child(2){display: none;}
+            #logo>img:nth-child(1){display: block;}
+            #right_menu{margin-right: 50px;}
+            #right_menu>li:nth-child(1){margin-right: 30px;background-color: #000;color: #fff;width: 131px;height: 40px;margin-top: 15px;line-height: 40px;border-radius: 25px;}
+            #right_menu>li:nth-child(2)>img:nth-child(1){display: block;}
+            #right_menu>li:nth-child(2)>img:nth-child(2){display: none;}
+            #menu{display: block;}
+
+            #main_bg{display: inline-block;}
+            #main_mobile_bg{display: none;}
+            #main_txt_box{width: 60%;height: 80%;position: absolute;left: 140px;top: 70px;text-align: left;}
+            #main_txt_box>h2{font-size: 5vw;color: #fff;}
+            #main_txt_box>p{ font-size: 1.2vw; color: #fff; font-weight: 900;line-height: 2.1vw;margin-top: 40px;}
+            #main_txt_box>button{width: 10vw;height: 2.6vw;border: 1px solid #fff;background-color: transparent;color: #fff;font-size: 1vw;font-weight: 900;margin-top: 45px;text-align: center;}
+
+            #banner1_txt_box{position: absolute;width: 500px;right: 200px;top: 70px;}
+            #banner1_txt_box>h3{font-size: 32px;}
+            #banner1_txt_box>h3:nth-child(3){text-align: right;}
+            #banner1_txt_box>p{margin-top: 50px;font-weight: 600;font-size: 18px;}
+            #banner1_txt_box>button{width: 180px;height: 54px;border: 1px solid #000;background-color: transparent;font-size: 16px;font-weight: 900;margin-top: 60px;}
+            #banner1_pc{width: 100%;vertical-align: top;display: inline-block;}
+            #banner1_mobile{width: 100%;vertical-align: top;display: none;}
+            .comment>li:nth-child(2){border-left: 2px solid #000;margin-left: 4px;}
+        .comment>li:nth-child(2)>p{margin-left: 4px;}
+            #view{width: 940px;}
+            #view>div>img:nth-child(1){display: block;}
+            #view>div>img:nth-child(2){display: none;}
+            .vtm{display: none;}
+            
+        .vtp{display: block;}
+            #view>div>h3{position: absolute;top: 55px;left: 48px;font-size: 22px;color: #fff;font-weight: 900;}
+            #service { width: 940px; }
+            #service>ul>li{width: 31.333%;float: left;}
+            #service_mobile{display: none;}
+         
+          
+            #consumer{width: 980px;padding-left: 0;}
+            #consumer>ul{width: 100%;}
+            #consumer>ul>li>p{font-size: 16px;font-weight: 600;line-height: 28px;}
+            .comment{float: left;width: 70%;margin-top: 50px;}
+            .comment>li:nth-child(2){border-left: 2px solid #000;margin-left: 4px;}
+        .comment>li:nth-child(2)>p{margin-left: 4px;}
+        .comment>li{float: left;}
+        #produce{width: 980px;overflow: hidden;margin: auto;margin-top: 100px;}
+        .produce_pc_img{display: block;}
+        .produce_mobile_img{display: none;}
+        #produce>div>h3{font-size: 24px;}
+        #produce>div>p{font-size: 18px;}
+            #footer_box{width: 1080px;}
+            #footer_box1{display: block;}
+            #footer_box2{display: block;}
+            #footer_box3{display: block;width: 45%;}
+            #service_txt_box{float: none;}
+            #service_txt_box{width: 100%;overflow: hidden;margin-left: 0%;}}
+            #service_txt_box>h4{font-size: 22px;margin-top: 30px;}
+            #service_txt_box>h5{font-size: 18px;line-height: 28px;color: #8e8e9d;margin-top: 30px;}
+            #service_txt_box>h5>span{line-height: 22px;font-size: 22px;}
+           
+            #service_txt_box>p{font-size: 18px;font-weight: 400;line-height: 32px;font-size: 16px;}
+            #service_txt_box>button{font-size: 16px;font-weight: 900;}
+
+        
+        
+            
+
+        @media all and (min-width:1280px){ /* 1024~ */
+            #service { width: 1040px; }
+            #consumer{width: 980px;}
+            #view{width: 1040px;}
+            #service>ul>li{width: 31.333%;float: left;}
+        }
+        @media all and (min-width:1540px){ /* 1024~ */
+            #service { width: 1380px; }
+            #consumer{width: 1230px;}
+            #consumer>ul{width: 100%;}
+            .comment{float: left;width: 70%;margin-top: 50px;}
+            .comment>li:nth-child(2){border-left: 2px solid #000;margin-left: 4px;}
+        .comment>li:nth-child(2)>p{margin-left: 4px;}
+        .comment>li{float: left;}
+        #produce{width: 1230px;overflow: hidden;margin: auto;margin-top: 100px;}
+        .produce_pc_img{display: block;}
+        .produce_mobile_img{display: none;}
+        #produce>div>h3{font-size: 24px;}
+        #produce>div>p{font-size: 18px;}
+            #service>ul>li{width: 31.333%;float: left;}
+            #service_mobile{display: none;}
+            #service>ul>li:nth-child(2){margin: 0 2%;}
+            #service_txt_box{width: 100%;overflow: hidden;}
+            #view{width: 1380px;}
+            
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1 id="logo"><img src="icons/ico_logo_detail.png" alt=""><img src="icons/ico_logo_w.png" alt=""></h1>
+        <ul id="menu">
+            <li>서비스소개</li><li>포트폴리오</li><li>아파트멘터리 피플</li><li>회사소개</li>
+        </ul>
+
+        <ul id="right_menu">
+            <li>서비스신청</li>
+            <li><img src="icons/ico_menu_web.png" alt=""><img src="icons/ico_menu_web_w.png" alt=""></li>
+        </ul>
+    </header>
+
+    <section id="main">
+        <img src="images/lg_home-slogan-bg.jpg" alt="" id="main_bg">      
+        <img src="images/home-slogan-bg.jpg" alt="" id="main_mobile_bg">
+        <div id="main_txt_box">
+            <h2>SPACE <br>
+                BETTERS <br>
+                LIFE <br>
+            </h2>
+            
+            <p>6년간 1,000여세대의 <br>
+                아파트라이프를 바꾼 <br>
+                리모델링 서비스를 만나보세요.</p>
+
+                <button id="main_btn">
+                    서비스소개
+                </button>
+        </div>
+    </section>
+    <section id="service">
+        <h3>서비스 종류</h3>
+        <ul>
+            <li>
+                <img src="images/home-service-five.jpg" alt="">
+                <img src="images/home-service-five-figure.png" alt="" id="service_mobile">
+                <div id="service_txt_box">
+                <h4>파이브</h4>
+                <h5><span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>구축 전용 서비스
+                    </h5>
+                <p>샷시교체부터 레이아웃변경까지<br>
+                    전반적인 리모델링 필요하다면</p>
+                <button>자세히보기
+                    > </button>
+                </div>
+            </li>
+            <li>
+                <img src="images/home-service-switch.jpg" alt="">
+                <img src="images/home-service-switch-figure.png" alt="" id="service_mobile">
+                <div id="service_txt_box">
+                <h4>스위치
+                    
+                    </h4>
+                <h5><span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>신축 전용 서비스</h5>
+                <p>필요한 부분만 예산에 맞게 <br>
+                    5년차 이하에 최적화된 서비스</p>
+                <button>자세히보기
+                    ></button></div>
+            </li>
+            <li>
+                <img src="images/home-service-kitchen.jpg" alt="">
+                <img src="images/home-service-kitchen-figure.png" alt="" id="service_mobile">
+                <div id="service_txt_box">
+                <h4>키친
+                    
+                    </h4>
+                <h5><span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>단품 시공 서비스</h5>
+                <p>아파트멘터리 키친만으로<br>
+                    집안전체 분위기를 바꾸려면</p>
+                <button>자세히보기
+                    ></button></div>
+            </li>
+        </ul>
+    </section>
+    <section id="view">
+        <div id="view1">
+            <img src="images/lg_home-portfolio.jpg" alt="" id="view1_pc">
+            <img src="images/home-portfolio.jpg" alt="" id="view1_mobile"><h3 class="vtp">포트폴리오 모아보기</h3>
+            <h3 class="vtm">포트폴리오<br>모아보기</h3></div>
+        <div id="view2">
+            <img src="images/lg_home-nearby.jpg" alt="" id="view2_pc">
+            <img src="images/home-nearby.jpg" alt="" id="view2_mobile">
+            <h3 class="vtp">우리동네 인테리어 찾아보기</h3>
+            <h3 class="vtm">우리동네 인테리어<br>찾아보기</h3></div>
+    </section>
+    <section id="banner1">
+        <img src="images/lg_home-voc.jpg" alt="" id="banner1_pc">
+        <img src="images/home-voc.jpg" alt="" id="banner1_mobile">
+        <div id="banner1_txt_box">
+            <h3>"</h3>
+            <h3>아파트멘터리를 선택한 것은<br>
+                좋은 선택이었습니다.</h3>
+            <h3>"</h3>
+            <p>아파트멘터리가 고객의 소리에 집착하는 이유.</p>
+            <button>자세히 보기
+               <span> > </span>
+                </button>
+        </div>
+    </section>
+    <section id="consumer">
+        <h3>고객의 만족도</h3>
+        <ul>
+            <li>
+                <img src="images/home-satisfaction-00.jpg" alt="">
+                <h4>"</h4>
+                <p>후회없는 선택이었습니다. 저희 생활에 딱 맞으면서 미적으로도 우수한 집을 만들어 주셨어요!</p>
+                <div class="consumers">
+                    <img src="images/home-customer-00.png" alt="">
+                    <ul class="comment">
+                        <li>
+                            <p>역삼 디오빌</p>
+                        </li>
+                        <li>
+                            <p>남유정,김재석 고객님</p>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li>
+                <img src="images/home-satisfaction-01.jpg" alt="">
+                <h4>"</h4>
+                <p>제 취향을 충분히 반영하면서도 전문가적 견해를 더해서 정말 제가 원하는 것, 그 이상의 결과물이 만들어졌습니다.</p>
+                <div class="consumers">
+                    <img src="images/home-customer-01.png" alt="">
+                    <ul class="comment">
+                        <li>
+                            <p>화서역 푸르지오</p>
+                        </li>
+                        <li>
+                            <p>김이나 고객님</p>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li>
+                <img src="images/home-satisfaction-02.jpg" alt="">
+                <h4>"</h4>
+                <p>어머니께서 앞으로 쾌적하게 살 집을 만들기 위해 아파트멘터리에 의뢰하게 되었습니다. 꼼꼼하게 체크해주시고 마무리까지 잘 챙겨주셔서 감사합니다.</p>
+                <div class="consumers">
+                    <img src="images/home-customer-02.png" alt="">
+                    <ul class="comment">
+                        <li>
+                            <p>대조동 삼성타운</p>
+                        </li>
+                        <li>
+                            <p>변사범 고객님</p>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </section>
+    <section id="produce">
+        <div id="produce1">
+            <img src="images/lg_home-intro-company.jpg" alt="" class="produce_pc_img"><img src="images/home-intro-company.jpg" alt="" class="produce_mobile_img">
+            <h3>아파트멘터리 소개</h3>
+            <p>고객에게 가장 소중한
+                자산인 아파트, <br>
+                인테리어 역시 아파트를
+                가장 잘 아는 브랜드에
+                맡겨야 합니다.</p>
+            <button>자세히보기 &nbsp;&nbsp;></button>
+        </div>
+        <div id="produce2">
+            <img src="images/lg_home-intro-pb.jpg" alt="" class="produce_pc_img"><img src="images/home-intro-pb.jpg" alt="" class="produce_mobile_img">
+            <h3>PB브랜드
+                소개</h3>
+            <p>다양한 각도로 모든 고객이 <br>
+                아름다운 집에서 살 수 있게
+                리드할 방법을 모색합니다.</p>
+            <button>자세히보기 &nbsp;&nbsp; ></button>
+        </div>
+    </section>
+    <footer>
+        <div id="footer_box">
+            <div id="footer_box1">
+                <ul>
+                    <li>
+                        <h4>CS CENTER</h4>
+                    </li>
+                    <li>
+                        <p>02. 6356. 1224</p>
+                    </li>
+                    <li>
+                        <p>카카오톡 문의하기</p>
+                    </li>
+                    <li>
+                        <p>ask@apartmentary.com</p>
+                    </li>
+                    <li>
+                        <p>Apartmentary 채용문의</p>
+                    </li>
+                    <li>
+                        <p>서울특별시 강남구 도산대로 237, 4F</p>
+                    </li>
+                </ul>
+            </div>
+            <div id="footer_box2">
+                <h4>sns</h4>
+                <ul>
+                    <li><img src="icons/ico_instagram.png" alt=""></li>
+                    <li><img src="icons/ico_naver.png" alt=""></li>
+                    <li><img src="icons/ico_youtube.png" alt=""></li>
+                </ul>
+            </div>
+            <div id="footer_box3">
+                <ul>
+                    <li>
+                        <p>이용약관</p>
+                    </li>
+                    <li>
+                        <p>개인정보 처리방침</p>
+                    </li>
+                    <li>
+                        <p>사업자 정보 확인</p>
+                    </li>
+                </ul>
+                <ul>
+                    <li><p>· 법인명: 아파트멘터리(주)</p></li>
+                    <li><p>· 대표자: 윤소연</p></li>
+                    <li><p>· 사업자 등록번호: 723.87.00195</p></li>
+                    <li><p>· 통신판매업 신고: 제 2016 . 서울마포 .0923호</p></li>
+                    <li><p>· 개인정보관리책임자: 황은미(mia@apartmentary.com)</p></li>
+                    <li><p>· 주소: 서울특별시 강남구 도산대로 237, 4F</p></li>
+                    <li><p>· TEL: 02. 6356. 1224</p></li>
+                </ul>
+                <p>© 2015-2022 All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
