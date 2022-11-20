@@ -21,7 +21,12 @@
                 }
                 last_sc = sc
             })
-            
+            $("#right_menu>li:nth-child(2)").click(function(){
+                $("#side_menu").css({"display":"block"})
+            })
+            $("#side_menu_close").click(function(){
+                $("#side_menu").css({"display":"none"})
+            })
         })
     </script>
     <link rel="shortcut icon" href="icons/apartmentery_pabicon.ico">
@@ -136,6 +141,44 @@
         #footer_box3>ul:nth-child(2){margin-top: 30px;}
         #footer_box3>ul:nth-child(2)>li{font-size: 12px;color: #808080;float: left;line-height: 24px;}
         #footer_box3>p{margin-top: 140px;color: #808080;font-size: 12px;}
+
+        #side_menu{z-index: 999;position: fixed;top: 0;left: 0;background-color: #fff;width: 100%;height: 100%;display: none;}
+        #side_menu_top{width: 100%;height: 80px;background-color: #feeb8f;position: relative;}
+        #side_menu_top>div{width: 840px;height: 80px;position: relative;margin: auto;}
+        #side_menu_top_text{font-size: 14px;;cursor: pointer;height: 15px;line-height: 15px;font-weight: 900;position: absolute;top: 0;bottom: 0;left: 0;margin: auto;}
+
+        #side_menu_logo{position: absolute;left: 30px;top: 0;bottom: 0;margin: auto;cursor: pointer;}
+        #side_menu_close{width: 30px;position: absolute;top: 0;bottom: 0;right: 30px;margin: auto;cursor: pointer;}
+        #side_menu_bg{margin-top: 3px;position: absolute;bottom: 0;left: 480px;}
+        #side_menu_body{width: 840px;overflow: hidden;;position: relative;margin: auto;margin-top: 100px;}
+
+        #side_menu_section1{width: 350px;height: 530px;float: left;margin-right: 130px;}
+
+        #side_menu_section1>ul:nth-child(1){width: 100%;text-align-last: left;}
+        #side_menu_section1>ul>h3{font-size: 13px;color: #aaa;font-weight: 300;margin-bottom: 10px;}
+        #side_menu_section1>ul>li{font-size: 40px;letter-spacing: 2px;margin-bottom: 20px;cursor: pointer;}
+        #side_menu_section1>div{width: 317px;height: 82px;background: url(images/bg_oval_line.png) center no-repeat;margin-top: 50px;position: relative;}
+        #side_menu_section1>div>h4{font-weight: 400;font-size: 18px;position: absolute;bottom: 20px;left: 40px;}
+        #side_menu_section1>div>h4>span{font-weight: 900;}
+        #side_menu_section1>div>p{font-size: 12px;font-weight: 900;position: absolute;top: 20px;left: 40px;}
+        #side_menu_section1>div>img{position: absolute;bottom: 0;top: 0;right: 40px;margin: auto;}
+        #side_menu_icon{width: 220px;height: 60px;margin: auto;margin-top: 50px;}
+        #side_menu_icon>li{width: 60px;height: 60px;position: absolute;float: left;margin-right: 20px;border: 1px solid #aaa;border-radius: 60px;position: relative;box-sizing: border-box;}
+        #side_menu_icon>li:nth-child(3){margin-right: 0;}
+        #side_menu_icon>li>img{position: absolute;top: 0;bottom: 0;left: 0;right: 0;margin: auto;}
+
+        #side_menu_section2{width: 350px;height: 530px;float: left;}
+        
+        #side_menu_section2>ul>h3{font-size: 13px;color: #aaa;font-weight: 300;margin-bottom: 10px;}
+        #side_menu_content>li{margin-bottom: 10px;}
+        #side_menu_service{overflow: hidden;margin-top: 50px;}
+        #side_menu_service>li{width: 100%;margin-bottom: 10px;overflow: hidden;}
+        #side_menu_service>li>h4{float: left;font-weight: 300;}
+        #side_menu_service>li>h4>span{font-weight: 900;}
+        #side_menu_service>li>p{float: left;margin-left: 20px;}
+        #side_menu_cs{margin-top: 50px;}
+        #side_menu_cs>li{font-weight: 900;font-size: 14px;margin-bottom: 10px;}
+        #side_menu_cs>li>span{margin-left: 20px;}
     </style>
     <style>
 
@@ -169,7 +212,7 @@
             .comment{float: left;width: 70%;margin-top: 25px;}
             .comment>li:nth-child(2){border-left: 0px solid #000;margin-left: 0px;}
             .comment>li{float: none;}
-        .comment>li:nth-child(2)>p{margin-left: 4px;}
+            .comment>li:nth-child(2)>p{margin-left: 4px;}
             #footer_box{width: 100%;}
             #footer_box1{display: none;}
             #footer_box2{display: none;}
@@ -190,21 +233,20 @@
             #consumer>ul{width: 1000px;}
             #consumer>ul>li>p{font-size: 12px;font-weight: 600;line-height: 20px;}
             #produce{width: 96%;overflow: hidden;margin: auto;margin-top: 100px;}
-        .produce_pc_img{display: none;}
-        .produce_mobile_img{display: block;}
-        #produce>div>h3{font-size: 18px;}
-        #produce>div>p{font-size: 13px;}
+            .produce_pc_img{display: none;}
+            .produce_mobile_img{display: block;}
+            #produce>div>h3{font-size: 18px;}
+            #produce>div>p{font-size: 13px;}
             #view{width: 100%;}
             #view>div>img:nth-child(2){display: block;}
             #view>div>img:nth-child(1){display: none;}
             .vtp{display: none;}
-        .vtm{display: block;}
+            .vtm{display: block;}
             #view>div>h3{position: absolute;top: 40px;left: 20px;font-size: 20px;}
-        }
+        
 
-        @media all and (min-width:768px){ /* 0~1023*/
-            
-        }   
+        }
+  
 
 
 
@@ -252,14 +294,14 @@
             #consumer>ul>li>p{font-size: 16px;font-weight: 600;line-height: 28px;}
             .comment{float: left;width: 70%;margin-top: 50px;}
             .comment>li:nth-child(2){border-left: 2px solid #000;margin-left: 4px;}
-        .comment>li:nth-child(2)>p{margin-left: 4px;}
-        .comment>li{float: left;}
-        #produce{width: 980px;overflow: hidden;margin: auto;margin-top: 100px;}
-        .produce_pc_img{display: block;}
-        .produce_mobile_img{display: none;}
-        #produce>div>h3{font-size: 24px;}
-        #produce>div>p{font-size: 18px;}
-        #consumer>ul>li{width: 32%;float: left;position: relative;padding-bottom: 90px;height: 30%;overflow: hidden;height: 490px;}
+            .comment>li:nth-child(2)>p{margin-left: 4px;}
+            .comment>li{float: left;}
+            #produce{width: 980px;overflow: hidden;margin: auto;margin-top: 100px;}
+            .produce_pc_img{display: block;}
+            .produce_mobile_img{display: none;}
+            #produce>div>h3{font-size: 24px;}
+            #produce>div>p{font-size: 18px;}
+            #consumer>ul>li{width: 32%;float: left;position: relative;padding-bottom: 90px;height: 30%;overflow: hidden;height: 490px;}
             #footer_box{width: 1080px;}
             #footer_box1{display: block;}
             #footer_box2{display: block;}
@@ -273,7 +315,7 @@
             #service_txt_box>p{font-size: 18px;font-weight: 400;line-height: 32px;font-size: 16px;}
             #service_txt_box>button{font-size: 16px;font-weight: 900;}
 
-        
+
         
             
 
@@ -318,6 +360,73 @@
             <li>서비스신청</li>
             <li><img src="icons/ico_menu_web.png" alt=""><img src="icons/ico_menu_web_w.png" alt=""></li>
         </ul>
+        <div id="side_menu">
+
+            <div id="side_menu_top">
+                <img src="icons/ico_logo.png" alt="" id="side_menu_logo">
+                <div>
+                    <div id="side_menu_top_text"><img src="icons/ico_location.png" alt="">우리 동네 아파트를 검색해보세요 ></div>
+                    <img src="images/bg_banner.png" alt="" id="side_menu_bg"> 
+                </div>
+
+                <img src="icons/ico_close_b.png" alt="" id="side_menu_close">                
+            </div>
+            <div id="side_menu_body">
+                <div id="side_menu_section1">
+                    <ul>
+                        <h3>ABOUT</h3>
+                        <li>OUR STORY</li>
+                        <li>OUR SERVICE</li>
+                        <li>CONTACT US</li>
+                    </ul>
+                    <ul id="side_menu_icon">
+                        <li><img src="icons/ico_instagram.png" alt=""></li>
+                        <li><img src="icons/ico_naver.png" alt=""></li>
+                        <li><img src="icons/ico_youtube.png" alt=""></li>
+                    </ul>
+                    <div>
+
+                        
+                            <h4><span>STOLY</span> SHOP</h4>
+                            <p>작은것 하나하나 우리 집에 꼭 맞게</p>                            
+                        
+                        <img src="images/menu_furniture.jpg" alt="">
+                    </div>
+                </div>
+                <div id="side_menu_section2">
+                    <ul id="side_menu_content">
+                        <h3>CONTENTS
+                            
+                            </h3>
+                        <li>PORTFOLIO</li>
+                        <li>APARTMENTARY PEOPLE</li>
+                    </ul>
+                    <ul id="side_menu_service">
+                        <h3>OUR SERVICE
+                            
+                            </h3>
+                        <li>
+                            <h4>리모델링</h4>
+                            <p>FIVE | SWITCH | KITCHEN</p>
+                        </li>
+                        <li>
+                            <h4><span>PB</span> 브랜드</h4>
+                            <p>PRODUCT</p>
+                        </li>
+                    </ul>
+                    <ul id="side_menu_cs">
+                        <h3>CS CENTER</h3>
+                        <li>Call<span> 02. 6356. 1224</span></li>
+                        <li>E-mail<span> ask@apartmentary.com</span></li>
+                        <li>카카오톡 문의</li>
+                        <li>채용 문의</li>
+                    </ul>
+                </div>               
+            </div>
+
+
+
+        </div>
     </header>
 
     <section id="main">
