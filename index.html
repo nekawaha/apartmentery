@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
     <title>아파트멘터리</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script>
@@ -26,6 +27,22 @@
             })
             $("#side_menu_close").click(function(){
                 $("#side_menu").css({"display":"none"})
+            })
+            $("#consumer>ul").draggable({
+                axis:'x',
+                drag:function(){
+                    contentX = $("#info_content").position().left
+
+                    if(contentX>0){
+                        $("#info_content").stop().animate({left:0})
+                    }
+
+                    if(contentX<-1220){
+                        $("#info_content").stop().animate({left:-1200})
+                    }
+                    dragX = $("#drag").position().left
+                    $("#drag").css({'left':-contentX*104/1200})
+                }
             })
         })
     </script>
@@ -56,7 +73,7 @@
         #main_mobile_bg{display: none;}
         #main_txt_box{width: 60%;height: 80%;position: absolute;left: 140px;top: 70px;}
         #main_txt_box>h2{font-size: 5vw;color: #fff;}
-        #main_txt_box>p{ font-size: 1.2vw; color: #fff; font-weight: 900;line-height: 2.1vw;margin-top: 40px;}
+        #main_txt_box>p{ font-size: 12px; color: #fff; font-weight: 900;line-height: 18px;margin-top: 40px;}
         #main_txt_box>button{width: 10vw;height: 2.6vw;border: 1px solid #fff;background-color: transparent;color: #fff;font-size: 1vw;font-weight: 900;margin-top: 45px;text-align: center;}
 
         #view{width: 1050px;margin: 120px auto;overflow: hidden;}
@@ -183,7 +200,7 @@
     <style>
 
 
-        @media all and (min-width:0px){/*320~767 모바일*/
+        @media all and (min-width:340px){/*320~767 모바일*/
             header{background-color: #000;}
             #logo{margin-left: 30px;width: 30px;height: 30px;margin-top: 20px;}
             #logo>img:nth-child(2){display: block;}
@@ -196,13 +213,13 @@
 
             #main_mobile_bg{display: inline-block;}
             #main_bg{display: none;}
-            #main_txt_box{width: 240px;height: 280px;position: absolute;left: 26%;top: 20px;text-align: center;}
+            #main_txt_box{width: 240px;height: 280px;position: absolute;left: 0%;top: 20px;right: 0;margin: auto;text-align: center;}
             #main_txt_box>h2{font-size: 40px;color: #000;font-weight: 300;}
-            #main_txt_box>p{ font-size: 10px; color: #000; font-weight: 900;line-height: 2.1vw;margin-top: 16px;}
+            #main_txt_box>p{ font-size: 12px; color: #000; font-weight: 900;line-height: 18px;margin-top: 10px;}
             #main_txt_box>button{width: 135px;height: 40px;border: 1px solid #000;background-color: transparent;color: #000;font-size: 12px;font-weight: 900;margin-top: 26px;text-align: center;}
 
 
-            #banner1_txt_box{position: absolute;width: 260px;right: 200px;top: 40px;}
+            #banner1_txt_box{position: absolute;width: 260px;right: 60px;top: 20px;}
             #banner1_txt_box>h3{font-size: 20px;}
             #banner1_txt_box>h3:nth-child(3){text-align: right;}
             #banner1_txt_box>p{margin-top: 20px;font-weight: 600;font-size: 14px;}
@@ -220,7 +237,7 @@
             #consumer>ul>li{width: 32%;float: left;position: relative;padding-bottom: 90px;height: 30%;overflow: hidden;height: 440px;}
             #service { width: 90%; }
             #service>ul>li{width: 100%;float: left;}
-            #service>ul>li:nth-child(2){margin: 50px 0;}
+            #service>ul>li:nth-child(2){margin: 30px 0;}
             #service_mobile{display: block;width: 30%;margin-top: 20px;}
             #service_txt_box{float: left; width: 170px;margin-left: 5%;}
             #service_txt_box{width: 65%;overflow: hidden;}
@@ -276,13 +293,13 @@
             #banner1_pc{width: 100%;vertical-align: top;display: inline-block;}
             #banner1_mobile{width: 100%;vertical-align: top;display: none;}
             .comment>li:nth-child(2){border-left: 2px solid #000;margin-left: 4px;}
-        .comment>li:nth-child(2)>p{margin-left: 4px;}
+            .comment>li:nth-child(2)>p{margin-left: 4px;}
             #view{width: 940px;}
             #view>div>img:nth-child(1){display: block;}
             #view>div>img:nth-child(2){display: none;}
             .vtm{display: none;}
             
-        .vtp{display: block;}
+            .vtp{display: block;}
             #view>div>h3{position: absolute;top: 55px;left: 48px;font-size: 22px;color: #fff;font-weight: 900;}
             #service { width: 940px; }
             #service>ul>li{width: 31.333%;float: left;}
@@ -307,18 +324,19 @@
             #footer_box2{display: block;}
             #footer_box3{display: block;width: 45%;}
             #service_txt_box{float: none;}
-            #service_txt_box{width: 100%;overflow: hidden;margin-left: 0%;}}
+            #service_txt_box{width: 100%;overflow: hidden;margin-left: 0%;}
             #service_txt_box>h4{font-size: 22px;margin-top: 30px;}
             #service_txt_box>h5{font-size: 18px;line-height: 28px;color: #8e8e9d;margin-top: 30px;}
             #service_txt_box>h5>span{line-height: 22px;font-size: 22px;}
            
             #service_txt_box>p{font-size: 18px;font-weight: 400;line-height: 32px;font-size: 16px;}
             #service_txt_box>button{font-size: 16px;font-weight: 900;}
-
+            #service>ul>li:nth-child(2){margin: 0 2%;}
+        }
 
         
             
-
+        
         @media all and (min-width:1280px){ /* 1024~ */
             #service { width: 1040px; }
             #consumer{width: 980px;}
@@ -341,7 +359,7 @@
         #consumer>ul>li{width: 32%;float: left;position: relative;padding-bottom: 90px;height: 30%;overflow: hidden;height: 560px;}
             #service>ul>li{width: 31.333%;float: left;}
             #service_mobile{display: none;}
-            #service>ul>li:nth-child(2){margin: 0 2%;}
+           
             #service_txt_box{width: 100%;overflow: hidden;}
             #view{width: 1380px;}
             
